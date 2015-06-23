@@ -1,5 +1,7 @@
 package com.sposato.Calculator;
 
+import com.sun.istack.internal.Nullable;
+
 /**
  * Class: Calculator
  * Author: John Sposato
@@ -42,9 +44,17 @@ public class Calculator {
      * divide - Divide two integers
      * @param x
      * @param y
-     * @return
+     * @return Integer returnValue
+     *
+     * @apiNote Will return -1 on a divide by zero
      */
     public int divide(Integer x, Integer y) {
-        return x/y;
+        Integer returnValue = null;
+        try {
+           returnValue = x/y;
+        } catch (ArithmeticException e) {
+            returnValue = -1;
+        }
+        return returnValue;
     }
 }

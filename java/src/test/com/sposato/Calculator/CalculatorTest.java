@@ -3,8 +3,10 @@ package test.com.sposato.Calculator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import com.sposato.Calculator.Calculator;
 
@@ -29,6 +31,9 @@ public class CalculatorTest {
     public void after() throws Exception {
 
     }
+
+    @Rule
+    public ExpectedException thrown= ExpectedException.none();
 
     /**
      * Method: add(Integer x, Integer y)
@@ -68,5 +73,16 @@ public class CalculatorTest {
         Integer result = calc.divide(4, 4);
 
         assertTrue(result == 1);
+    }
+
+    /**
+     * Method divide(Integer x, Integer y)
+     * @throws ArithmeticException
+     */
+    @Test
+    public void testDivideByZero() throws Exception {
+        Integer result = calc.divide(4, 0);
+        assertTrue(result == -1);
+
     }
 } 
